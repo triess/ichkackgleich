@@ -26,6 +26,8 @@ public class Tile{
   public static Tile graueFliese3 = new Tile(Sprite.graueFliese3,false);   
   public static Tile graueFliese4 = new Tile(Sprite.graueFliese4,false); 
   public static Tile normalesGras = new Tile(Sprite.normalesGras,false); 
+  public static Tile horizontalesZerstoerbaresWandTeil = new Tile(Sprite.horizontalesZerstoerbaresWandTeil,true); 
+  public static Tile vertikalesZerstoerbaresWandTeil = new Tile(Sprite.vertikalesZerstoerbaresWandTeil,true);
   
   public Tile(Sprite sprite, boolean solid){
     this.sprite = sprite;

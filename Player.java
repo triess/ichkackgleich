@@ -31,6 +31,19 @@ public class Player extends Mob{
       xa++; 
     } // end of if
     
+    if(input.space){
+    	switch(direction){
+    	case 0: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16-1,20 );
+    	break;
+    	case 1: if(welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16+1, (y+hoehe/2)/16,20 );
+    	break;
+    	case 2: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16+1,20 );
+    	break;
+    	case 3: if(welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16-1, (y+hoehe/2)/16,20 );
+    	break;
+    	}
+    }
+    
     if (xa != 0 || ya != 0) {
       move(xa, ya); 
     } // end of if

@@ -27,6 +27,8 @@ public class Sprite{
   public static Sprite graueFliese4 = new Sprite(16,2,2,Sprites.tiles); 
   public static Sprite normalesGras = new Sprite(16,3,2,Sprites.tiles); 
   public static Sprite leeresSprite = new Sprite(16, 0x000000); 
+  public static Sprite horizontalesZerstoerbaresWandTeil = new Sprite(16,9,2,Sprites.tiles);
+  public static Sprite vertikalesZerstoerbaresWandTeil = new Sprite(16,8,2,Sprites.tiles);
   
   public static Sprite player = new Sprite(14,0,0,Sprites.playerTiles);   
   public Sprite(int size, int x, int y, Sprites sheet){
