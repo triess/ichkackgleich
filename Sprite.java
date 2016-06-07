@@ -1,8 +1,8 @@
 public class Sprite{
-  public final int SIZE;
   private int x,y; 
   public int[] pixels; 
   private Sprites sheet; 
+  public int breite, hoehe;
   
   public static Sprite graueFliese1 = new Sprite(16,0,0,Sprites.tiles); 
   public static Sprite graueFliese2 = new Sprite(16,1,0,Sprites.tiles);
@@ -30,34 +30,45 @@ public class Sprite{
   public static Sprite horizontalesZerstoerbaresWandTeil = new Sprite(16,9,2,Sprites.tiles);
   public static Sprite vertikalesZerstoerbaresWandTeil = new Sprite(16,8,2,Sprites.tiles);
   
-  public static Sprite player = new Sprite(14,0,0,Sprites.playerTiles);   
+  public static Sprite player = new Sprite(10,16,0,0,Sprites.playerTiles);   
   public Sprite(int size, int x, int y, Sprites sheet){
-    SIZE = size; 
-    pixels = new int[SIZE*SIZE]; 
+    breite = size;
+    hoehe = size;
+    pixels = new int[size*size]; 
     this.x = x*size; 
     this.y = y*size; 
     this.sheet = sheet; 
-    load(); 
+    load(breite,hoehe); 
   }
+  public Sprite(int breite, int hoehe,int x, int y, Sprites sheet){
+    this.breite = breite; 
+    this.hoehe = hoehe; 
+    this.x = x*breite; 
+    this.y = y*hoehe; 
+    pixels = new int[breite*hoehe]; 
+    this.sheet = sheet; 
+    load(breite,hoehe);
+    }
   
   public Sprite(int size, int colour){
-    SIZE = size; 
-    pixels = new int[SIZE*SIZE]; 
+    breite = size; 
+    hoehe = size;
+    pixels = new int[size*size]; 
     setColour(colour); 
   }
   
   private void setColour(int colour){
-    for (int i = 0;i < SIZE*SIZE ;i++ ) {
+    for (int i = 0;i < breite*hoehe ;i++ ) {
       pixels[i] = colour; 
     } // end of for
     
   }
   
   
-  private void load(){
-    for (int y = 0;y < SIZE ;y++ ) {
-      for (int x = 0;x < SIZE ;x++ ) {
-        pixels[x+y*SIZE] = sheet.pixels[(x+this.x) + (y+this.y)*sheet.SIZE]; 
+  private void load(int breite, int hoehe){
+    for (int y = 0;y < hoehe ;y++ ) {
+      for (int x = 0;x < breite ;x++ ) {
+        pixels[x+y*breite] = sheet.pixels[(x+this.x) + (y+this.y)*sheet.SIZE]; 
       } // end of for
     } // end of for
     

@@ -4,8 +4,8 @@ public abstract class Mob extends Entity{
   protected int direction = 0; // 0 = norden, 1 = osten, 2 = süden, 3 = westen 
   protected boolean moving = false; 
   protected Level welt; 
-  protected int breite = 13;
-  protected int hoehe = 13;
+  public int breite;
+  public int hoehe;
   
   public Mob(Level level){
     welt = level; 

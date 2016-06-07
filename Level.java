@@ -219,17 +219,17 @@ public class Level{
             } // end of if
             if (tiles[i+1+j*width] != 0 && tiles[i-1+j*width] != 0 && tiles[i+(j+1)*width] == 0 && tiles[i+(j-1)*width] == 0) {
               if(Math.random()<destructablility){
-            	tiles[i+j*width] = 4;
-            	}else{
-            		tiles[i+j*width] = 21;
-            	} 
+              tiles[i+j*width] = 4;
+              }else{
+                tiles[i+j*width] = 21;
+              } 
             } // end of if
             if (tiles[i+1+j*width] == 0 && tiles[i-1+j*width] == 0 && tiles[i+(j+1)*width] != 0 && tiles[i+(j-1)*width] != 0) {
-            	if(Math.random()<destructablility){
-                	tiles[i+j*width] = 5;
-                	}else{
-                		tiles[i+j*width] = 22;
-                	} 
+              if(Math.random()<destructablility){
+                  tiles[i+j*width] = 5;
+                  }else{
+                    tiles[i+j*width] = 22;
+                  } 
             } // end of if
             if (tiles[i+1+j*width] == 0 && tiles[i-1+j*width] != 0 && tiles[i+(j+1)*width] == 0 && tiles[i+(j-1)*width] != 0) {
               tiles[i+j*width] = 11; 
@@ -269,7 +269,7 @@ public class Level{
     if (x < 0 || y < 0 || x >= width || y >= height)  return Tile.leeresTile;
     
     if (tiles[x+y*width] == 0 ) return Tile.holzParkett;   
-    if (tiles[x+y*width] == 1 ) return Tile.horizontalesWandTeil; 
+    if (tiles[x+y*width] == 1 ) return Tile.graueFliese3; 
     if (tiles[x+y*width] == 2 ) return Tile.graueFliese2;
     if (tiles[x+y*width] == 3 ) return Tile.wandKreuz;  
     if (tiles[x+y*width] == 4 ) return Tile.horizontalesWandTeil; 
@@ -296,6 +296,6 @@ public class Level{
   }
   
   public void setTile(int xt,int yt,int tileNumber){
-	  tiles[xt+yt*width]=tileNumber;
+    tiles[xt+yt*width]=tileNumber;
   }
 }

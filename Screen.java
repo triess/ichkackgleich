@@ -30,15 +30,15 @@ public class Screen{
   public void renderTile(int xp, int yp, Tile tile){
     xp -= xOffset; 
     yp -= yOffset; 
-    for (int y = 0;y < tile.sprite.SIZE ; y++ ) {
+    for (int y = 0;y < tile.sprite.hoehe ; y++ ) {
       int ya = y + yp;
-      for (int x = 0;x < tile.sprite.SIZE ; x++ ) {
+      for (int x = 0;x < tile.sprite.breite ; x++ ) {
         int xa = x + xp;
         
-        if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >=height) break;                    // nur tiles auf dem Bildschirm rendern 
+        if (xa < -tile.sprite.breite || xa >= width || ya < 0 || ya >=height) break;                    // nur tiles auf dem Bildschirm rendern 
         if (xa < 0) xa = 0; 
         
-        pixels[xa+ya*width] = tile.sprite.pixels[x+y*tile.sprite.SIZE]; 
+        pixels[xa+ya*width] = tile.sprite.pixels[x+y*tile.sprite.breite]; 
       } // end of for 
     }
   }
@@ -46,15 +46,16 @@ public class Screen{
   public void renderPlayer(int xp, int yp, Sprite sprite){
     xp -= xOffset; 
     yp -= yOffset; 
-    for (int y = 0;y < sprite.SIZE ; y++ ) {
+    for (int y = 0;y < sprite.hoehe ; y++ ) {
       int ya = y + yp;
-      for (int x = 0;x < sprite.SIZE ; x++ ) {
+      for (int x = 0;x < sprite.breite ; x++ ) {
         int xa = x + xp ;
         
-        if (xa < -(sprite.SIZE) || xa >= width || ya < 0 || ya >=height) break;                     
+        if (xa < -(sprite.breite) || xa >= width || ya < 0 || ya >=height) break;                     
         if (xa < 0) xa = 0; 
-        
-        pixels[xa+ya*width] = sprite.pixels[x+y*(sprite.SIZE)]; 
+        if (sprite.pixels[x+y*(sprite.breite)] != -65314) {
+          pixels[xa+ya*width] = sprite.pixels[x+y*(sprite.breite)]; 
+        } // end of if
       } // end of for 
     }
     
