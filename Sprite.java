@@ -1,8 +1,8 @@
 public class Sprite{
+  public final int SIZE;
   private int x,y; 
   public int[] pixels; 
   private Sprites sheet; 
-  public int breite, hoehe;
   
   public static Sprite graueFliese1 = new Sprite(16,0,0,Sprites.tiles); 
   public static Sprite graueFliese2 = new Sprite(16,1,0,Sprites.tiles);
@@ -29,46 +29,39 @@ public class Sprite{
   public static Sprite leeresSprite = new Sprite(16, 0x000000); 
   public static Sprite horizontalesZerstoerbaresWandTeil = new Sprite(16,9,2,Sprites.tiles);
   public static Sprite vertikalesZerstoerbaresWandTeil = new Sprite(16,8,2,Sprites.tiles);
+  public static Sprite zerstoertesWandTeil = new Sprite(16,0,3,Sprites.tiles);
   
-  public static Sprite player = new Sprite(10,16,0,0,Sprites.playerTiles);   
+  public static Sprite player = new Sprite(14,0,0,Sprites.playerTiles);   
+  
+  public static Sprite slime = new Sprite(14,0,0,Sprites.enemyTiles);
+  
   public Sprite(int size, int x, int y, Sprites sheet){
-    breite = size;
-    hoehe = size;
-    pixels = new int[size*size]; 
+    SIZE = size; 
+    pixels = new int[SIZE*SIZE]; 
     this.x = x*size; 
     this.y = y*size; 
     this.sheet = sheet; 
-    load(breite,hoehe); 
+    load(); 
   }
-  public Sprite(int breite, int hoehe,int x, int y, Sprites sheet){
-    this.breite = breite; 
-    this.hoehe = hoehe; 
-    this.x = x*breite; 
-    this.y = y*hoehe; 
-    pixels = new int[breite*hoehe]; 
-    this.sheet = sheet; 
-    load(breite,hoehe);
-    }
   
   public Sprite(int size, int colour){
-    breite = size; 
-    hoehe = size;
-    pixels = new int[size*size]; 
+    SIZE = size; 
+    pixels = new int[SIZE*SIZE]; 
     setColour(colour); 
   }
   
   private void setColour(int colour){
-    for (int i = 0;i < breite*hoehe ;i++ ) {
+    for (int i = 0;i < SIZE*SIZE ;i++ ) {
       pixels[i] = colour; 
     } // end of for
     
   }
   
   
-  private void load(int breite, int hoehe){
-    for (int y = 0;y < hoehe ;y++ ) {
-      for (int x = 0;x < breite ;x++ ) {
-        pixels[x+y*breite] = sheet.pixels[(x+this.x) + (y+this.y)*sheet.SIZE]; 
+  private void load(){
+    for (int y = 0;y < SIZE ;y++ ) {
+      for (int x = 0;x < SIZE ;x++ ) {
+        pixels[x+y*SIZE] = sheet.pixels[(x+this.x) + (y+this.y)*sheet.SIZE]; 
       } // end of for
     } // end of for
     

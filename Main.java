@@ -6,13 +6,16 @@
   * @Jakob Klinger
   */
 import java.awt.Canvas;
+
 import javax.swing.JFrame; 
+
 import java.awt.Dimension;
 import java.awt.image.BufferStrategy; 
 import java.awt.Graphics; 
 import java.awt.Color; 
 import java.awt.image.BufferedImage; 
 import java.awt.image.DataBufferInt; 
+import java.util.*;
 
 public class Main extends Canvas implements Runnable{
   public static int width = 300; 
@@ -28,6 +31,7 @@ public class Main extends Canvas implements Runnable{
   private Level level; 
   
   private Player player; 
+  private List<Enemy> enemies = new ArrayList<Enemy>();
   private Keyboard key; 
   private Thread thread;  
   private JFrame frame;
@@ -41,7 +45,8 @@ public class Main extends Canvas implements Runnable{
     frame = new JFrame();  
     key = new Keyboard(); 
     level = new Level(63,63,10,5,5);
-    player = new Player(key, level);  
+    player = new Player(key, level);
+    enemies.add(new Enemy(level,Sprite.slime,16,16));
     addKeyListener(key); 
   }
   
@@ -112,6 +117,10 @@ public class Main extends Canvas implements Runnable{
   public void update(){                                                         // rechnen 
     key.update();
     player.update();
+    for(Enemy e:enemies){
+    	e.update();
+    }
+    
   }
   public void render(){                                                         //zeichnen
     BufferStrategy bs = getBufferStrategy();
@@ -125,6 +134,7 @@ public class Main extends Canvas implements Runnable{
     int yScroll = player.y - screen.height / 2; 
     level.render(xScroll,yScroll,screen);
     player.render(screen);
+    screen.renderEnemys(enemies);
     
     for (int i = 0;i < pixels.length ;i++ ) {
       pixels[i] = screen.pixels[i];

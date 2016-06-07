@@ -4,8 +4,9 @@ public abstract class Mob extends Entity{
   protected int direction = 0; // 0 = norden, 1 = osten, 2 = süden, 3 = westen 
   protected boolean moving = false; 
   protected Level welt; 
-  public int breite;
-  public int hoehe;
+  protected int breite;
+  protected int hoehe;
+  protected int health;
   
   public Mob(Level level){
     welt = level; 
@@ -42,7 +43,7 @@ public abstract class Mob extends Entity{
   public void render(){
     
   }
-  private boolean xCollision(int xa){
+  public boolean xCollision(int xa){
     if (welt.getTile((x+xa)/16,(y)/16).getSolid()) {             // links oben
       return true;
     } // end of if
@@ -57,7 +58,7 @@ public abstract class Mob extends Entity{
     } // end of if
     return false;
   }
-  private boolean yCollision(int ya){
+  public boolean yCollision(int ya){
     if (welt.getTile((x)/16,(y+ya)/16).getSolid()) {             // links oben
       return true;
     } // end of if

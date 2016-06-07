@@ -7,7 +7,8 @@ public class Sprites{
   public int[] pixels; 
   
   public static Sprites tiles = new Sprites("/res/textures/Sprites.png ", 160 ); 
-  public static Sprites playerTiles = new Sprites("/res/textures/Spielersprites.png ", 16);  
+  public static Sprites playerTiles = new Sprites("/res/textures/Spielersprites.png ", 14);  
+  public static Sprites enemyTiles = new Sprites("/res/textures/Gegnersprites.png",14);
   
   public Sprites(String path, int size){
     this.path = path; 

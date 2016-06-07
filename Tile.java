@@ -28,6 +28,7 @@ public class Tile{
   public static Tile normalesGras = new Tile(Sprite.normalesGras,false); 
   public static Tile horizontalesZerstoerbaresWandTeil = new Tile(Sprite.horizontalesZerstoerbaresWandTeil,true); 
   public static Tile vertikalesZerstoerbaresWandTeil = new Tile(Sprite.vertikalesZerstoerbaresWandTeil,true);
+  public static Tile zerstoertesWandTeil = new Tile(Sprite.zerstoertesWandTeil,false);
   
   public Tile(Sprite sprite, boolean solid){
     this.sprite = sprite;

@@ -6,6 +6,7 @@ public class Level{
   protected int raeume; 
   protected int a, b; 
   public double destructablility=0.93;
+  public List<Enemy> enemies = new ArrayList<Enemy>();
   
   //Konstruktor für ein random Level
   public Level(int width, int height, int raeume, int a, int b){
@@ -219,17 +220,17 @@ public class Level{
             } // end of if
             if (tiles[i+1+j*width] != 0 && tiles[i-1+j*width] != 0 && tiles[i+(j+1)*width] == 0 && tiles[i+(j-1)*width] == 0) {
               if(Math.random()<destructablility){
-              tiles[i+j*width] = 4;
-              }else{
-                tiles[i+j*width] = 21;
-              } 
+            	tiles[i+j*width] = 4;
+            	}else{
+            		tiles[i+j*width] = 21;
+            	} 
             } // end of if
             if (tiles[i+1+j*width] == 0 && tiles[i-1+j*width] == 0 && tiles[i+(j+1)*width] != 0 && tiles[i+(j-1)*width] != 0) {
-              if(Math.random()<destructablility){
-                  tiles[i+j*width] = 5;
-                  }else{
-                    tiles[i+j*width] = 22;
-                  } 
+            	if(Math.random()<destructablility){
+                	tiles[i+j*width] = 5;
+                	}else{
+                		tiles[i+j*width] = 22;
+                	} 
             } // end of if
             if (tiles[i+1+j*width] == 0 && tiles[i-1+j*width] != 0 && tiles[i+(j+1)*width] == 0 && tiles[i+(j-1)*width] != 0) {
               tiles[i+j*width] = 11; 
@@ -290,12 +291,13 @@ public class Level{
     if (tiles[x+y*width] == 19 ) return Tile.graueFliese4; 
     if (tiles[x+y*width] == 20 ) return Tile.normalesGras;
     if (tiles[x+y*width] == 21 ) return Tile.horizontalesZerstoerbaresWandTeil; 
-    if (tiles[x+y*width] == 22 ) return Tile.vertikalesZerstoerbaresWandTeil; 
+    if (tiles[x+y*width] == 22 ) return Tile.vertikalesZerstoerbaresWandTeil;
+    if (tiles[x+y*width] == 23 ) return Tile.zerstoertesWandTeil;
     
     return Tile.leeresTile;  
   }
   
   public void setTile(int xt,int yt,int tileNumber){
-    tiles[xt+yt*width]=tileNumber;
+	  tiles[xt+yt*width]=tileNumber;
   }
 }

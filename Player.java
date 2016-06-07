@@ -5,19 +5,21 @@ public class Player extends Mob{
   
   public Player(Keyboard input, Level level){
     super(level);
+    breite=13;
+    hoehe=13;
     this.input = input;  
     this.x = 16; 
     this.y = 16; 
-    breite = Sprite.player.breite-1; 
-    hoehe = Sprite.player.hoehe-1; 
+    sprite=Sprite.player;
   }
   public Player(int x, int y,Keyboard input, Level level){
-    super(level); 
+    super(level);
+    breite=11;
+    hoehe=13;
     this.x = x; 
     this.y = y; 
+    sprite=Sprite.player;
     this.input = input; 
-    breite = Sprite.player.breite-1; 
-    hoehe = Sprite.player.hoehe-1; 
   }
   
   public void update(){
@@ -36,16 +38,16 @@ public class Player extends Mob{
     } // end of if
     
     if(input.space){
-      switch(direction){
-      case 0: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16-1,20 );
-      break;
-      case 1: if(welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16+1, (y+hoehe/2)/16,20 );
-      break;
-      case 2: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16+1,20 );
-      break;
-      case 3: if(welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16-1, (y+hoehe/2)/16,20 );
-      break;
-      }
+    	switch(direction){
+    	case 0: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16-1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16-1,23 );
+    	break;
+    	case 1: if(welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16+1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16+1, (y+hoehe/2)/16,23 );
+    	break;
+    	case 2: if(welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16, (y+hoehe/2)/16+1)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16, (y+hoehe/2)/16+1,23 );
+    	break;
+    	case 3: if(welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.vertikalesZerstoerbaresWandTeil ||welt.getTile((x+breite/2)/16-1, (y+hoehe/2)/16)==Tile.horizontalesZerstoerbaresWandTeil )welt.setTile((x+breite/2)/16-1, (y+hoehe/2)/16,23 );
+    	break;
+    	}
     }
     
     if (xa != 0 || ya != 0) {
@@ -54,6 +56,6 @@ public class Player extends Mob{
   }
   
   public void render(Screen screen){ 
-    screen.renderPlayer(x,y,Sprite.player);    
+    screen.renderPlayer(x,y,sprite);    
   }
 }
